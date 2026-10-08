@@ -6,8 +6,10 @@ __pycache__/
 *.pyc
 
 # MkDocs
+.mkdocs/site/
 site/
-docs/terms/index.md
+.mkdocs/docs/terms/
+.mkdocs/docs/plantillas/
 
 # Sistema operativo / IDEs
 .DS_Store

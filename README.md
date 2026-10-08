@@ -1,50 +1,35 @@
-# 🛡️ Glosario Colaborativo de Ciberseguridad
+# 🛡️ Glosario colaborativo de ciberseguridad
 
-Repositorio colaborativo para crear, organizar y mantener una enciclopedia y glosario técnico de ciberseguridad utilizando la metodología **Docs-as-Code** con **Material for MkDocs**, desplegado automáticamente en **GitHub Pages**.
-
-El glosario está diseñado para que el **alumnado y la comunidad** contribuyan añadiendo o mejorando términos mediante el flujo de trabajo estándar de Git (**Fork & Pull Request**).
+Repositorio colaborativo para crear, organizar y mantener una enciclopedia técnica de ciberseguridad mediante contribuciones del alumnado del **IES Celia Viñas** con **Pull Requests**.
 
 ---
 
-## 📂 Estructura del Proyecto
+## 📂 Estructura del repositorio
+
+Para facilitar la contribución, los alumnos únicamente interactúan con la carpeta de términos y la plantilla:
 
 ```text
-glosario-ciberseguridad/
-├── .github/
-│   ├── PULL_REQUEST_TEMPLATE.md       # Plantilla de verificación para PRs de alumnos
-│   └── workflows/
-│       ├── deploy.yml                 # Despliegue automático a GitHub Pages (main)
-│       └── validate-pr.yml            # Validación CI de metadatos y enlaces en cada PR
-├── docs/
-│   ├── index.md                       # Página principal con índice interactivo dinámico
-│   ├── guia-contribucion.md           # Guía completa de contribución para el alumnado
-│   ├── stylesheets/
-│   │   └── extra.css                  # Estilos personalizados (tarjetas, badges, dark mode)
-│   ├── plantillas/
-│   │   └── plantilla-termino.md       # Plantilla oficial para redactar un nuevo término
-│   └── terms/
-│       ├── sql-injection.md           # Término de ejemplo: Inyección SQL
-│       └── zero-trust.md              # Término de ejemplo: Zero Trust
-├── hooks/
-│   └── generate_glossary_index.py     # Hook de MkDocs: Genera el índice A-Z automáticamente
-├── .gitignore
-├── compose.yaml                       # Configuración de Docker Compose para entorno local
-├── Dockerfile                         # Imagen Docker con MkDocs y dependencias
-├── mkdocs.yml                         # Configuración principal de MkDocs y Material Theme
-├── README.md                          # Guía del proyecto y de contribución
-└── requirements.txt                   # Dependencias de Python
+glosario/
+├── terminos/                       # 📁 Carpeta con todos los términos del glosario (*.md)
+│   ├── cifrado.md
+│   ├── cve.md
+│   ├── firewall.md
+│   ├── zero-trust.md
+│   └── ...
+├── plantilla.md                    # 📄 Plantilla oficial para redactar un nuevo término
+└── README.md                       # 📖 Esta guía rápida de contribución
 ```
+
+*(La infraestructura web de MkDocs se encuentra empaquetada de forma transparente dentro de `.mkdocs/`).*
 
 ---
 
-## 🚀 Guía Rápida para Alumnos: Cómo Contribuir
+## 🚀 Cómo contribuir con un nuevo término
 
-Sigue estos pasos para investigar y proponer un nuevo término al glosario:
+### 1. Haz un fork del repositorio
+Pulsa el botón **Fork** (arriba a la derecha en GitHub) para copiar el repositorio a tu cuenta personal.
 
-### 1. Haz un Fork del Repositorio
-Haz clic en el botón **Fork** (arriba a la derecha en GitHub) para crear una copia del repositorio en tu cuenta personal.
-
-### 2. Clona tu Fork y Crea una Rama
+### 2. Clona tu fork y crea una rama
 Abre tu terminal y ejecuta:
 
 ```bash
@@ -55,16 +40,16 @@ git checkout -b feat/nombre-del-termino
 
 > 💡 *Usa nombres en minúsculas separados por guiones para la rama, por ejemplo: `feat/cross-site-scripting` o `feat/ransomware`.*
 
-### 3. Redacta tu Término Usando la Plantilla
-1. Copia el archivo de plantilla a la carpeta `docs/terms/` con el nombre de tu término en formato **kebab-case**:
+### 3. Redacta tu término usando la plantilla
+1. Copia la plantilla a la carpeta `terminos/` con el nombre de tu concepto en formato **kebab-case**:
    ```bash
-   cp docs/plantillas/plantilla-termino.md docs/terms/mi-termino.md
+   cp plantilla.md terminos/nombre-del-termino.md
    ```
-2. Abre `docs/terms/mi-termino.md` en tu editor de código.
+2. Abre `terminos/nombre-del-termino.md` en tu editor de código (VS Code, etc.).
 3. Rellena el bloque inicial de **metadatos YAML (Frontmatter)**:
    ```yaml
    ---
-   title: "Nombre del Término"
+   title: "Nombre del término"
    category: "Vulnerabilidades Web"
    author: "@tu-usuario-github"
    tags:
@@ -73,90 +58,35 @@ git checkout -b feat/nombre-del-termino
    summary: "Resumen conciso del término en 1 o 2 líneas explicativas."
    ---
    ```
-4. Desarrolla las secciones del término: **Definición**, **¿Cómo funciona?**, **Ejemplo práctico (seguro vs inseguro)**, **Medidas de mitigación** y **Referencias bibliográficas**.
+4. Desarrolla las secciones del término: **Definición**, **¿Cómo funciona?**, **Ejemplo práctico (seguro vs. inseguro)**, **Medidas de mitigación** y **Referencias**.
 
 ---
 
-## 🐳 Probar la Web en Local con Docker
+### 4. Envía tu contribución (pull request)
 
-Puedes levantar el servidor de documentación y ver tus cambios en tiempo real con recarga automática (*hot-reload*).
-
-### Opción con Docker Compose (Recomendado)
-
-```bash
-docker compose up
-```
-
-Abre tu navegador en: **[http://localhost:8000](http://localhost:8000)**
-
-Cada vez que edites y guardes un archivo en `docs/`, el navegador actualizará automáticamente el contenido y el índice alfabético.
-
-### Opción con Docker directo
-
-```bash
-# Construir la imagen
-docker build -t glosario-ciberseguridad .
-
-# Ejecutar el contenedor montando los archivos locales
-docker run --rm -it -p 8000:8000 -v $(pwd):/docs glosario-ciberseguridad
-```
-
----
-
-## 💻 Alternativa: Probar en Local con Python (sin Docker)
-
-Si prefieres usar un entorno virtual de Python en tu equipo:
-
-```bash
-# Crear y activar entorno virtual
-python3 -m venv .venv
-source .venv/bin/activate   # En Windows: .venv\Scripts\activate
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Iniciar servidor de desarrollo
-mkdocs serve
-```
-
----
-
-## 🔍 ¿Cómo Funciona el Índice Dinámico en la Página Principal?
-
-Para que los alumnos solo tengan que preocuparse de crear su archivo en `docs/terms/`, el proyecto incluye un **Hook de MkDocs** en [`hooks/generate_glossary_index.py`](hooks/generate_glossary_index.py):
-
-1. Durante la compilación o el servidor de desarrollo, el hook escanea todos los archivos Markdown en `docs/terms/`.
-2. Lee los metadatos YAML de cada término (`title`, `category`, `author`, `tags`, `summary`).
-3. Agrupa los términos alfabéticamente (A-Z) y genera automáticamente:
-   - Tarjetas de estadísticas (total de términos, categorías y colaboradores).
-   - Barra de salto alfabético interactivo.
-   - Tarjetas estilizadas con enlaces directos, insignias de categoría y etiquetas.
-4. Inyecta este contenido en el marcador `<!-- GLOSSARY_INDEX -->` de [`docs/index.md`](docs/index.md).
-
----
-
-## 📬 Enviar tu Contribución (Pull Request)
-
-1. Añade los cambios y haz commit:
+1. Guarda los cambios y haz commit:
    ```bash
-   git add docs/terms/mi-termino.md
-   git commit -m "feat(terms): añadir término <nombre-del-termino>"
+   git add terminos/nombre-del-termino.md
+   git commit -m "feat(terminos): añadir término <nombre-del-termino>"
    ```
 2. Sube la rama a tu fork en GitHub:
    ```bash
    git push origin feat/nombre-del-termino
    ```
 3. Dirígete a GitHub y haz clic en **"Compare & pull request"**.
-4. Completa la plantilla de PR verificando que cumples todos los puntos del checklist.
-5. El flujo automatizado de GitHub Actions (**`validate-pr.yml`**) validará que el formato YAML y la compilación de MkDocs sean correctos.
-6. Una vez revisado y aprobado por el profesorado, el término se integrará en `main` y se desplegará automáticamente en GitHub Pages.
+4. Completa la plantilla de PR verificando que cumples los puntos del checklist.
+5. El flujo automatizado de GitHub Actions validará automáticamente el formato de tu término.
+6. Tras la revisión y aprobación, el término se integrará y aparecerá publicado en la web oficial del glosario.
 
 ---
 
-## ⚙️ Configuración de GitHub Pages en el Repositorio
+## 🐳 Probar la web en local con Docker (Opcional)
 
-Para activar el despliegue automático en GitHub:
+Si deseas previsualizar cómo se renderiza la web completa en tu navegador:
 
-1. Ve a **Settings** > **Pages** en el repositorio de GitHub.
-2. En la sección **Build and deployment** > **Source**, selecciona **GitHub Actions**.
-3. Cada push a `main` ejecutará el workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) y publicará el sitio web.
+```bash
+docker compose -f .mkdocs/compose.yaml up
+```
+
+Abre en tu navegador: **[http://localhost:8000](http://localhost:8000)**
+Cualquier cambio que hagas en `terminos/` se actualizará automáticamente en vivo.

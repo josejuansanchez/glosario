@@ -1,9 +1,13 @@
-site_name: "Glosario de Ciberseguridad"
-site_description: "Glosario colaborativo y enciclopedia técnica de ciberseguridad gestionada como código."
-site_author: "Comunidad Educativa de Ciberseguridad"
+site_name: "Glosario de Ciberseguridad - IES Celia Viñas"
+site_description: "Glosario colaborativo y enciclopedia técnica de ciberseguridad del IES Celia Viñas gestionada como código."
+site_author: "IES Celia Viñas - Ciberseguridad"
+copyright: "Copyright &copy; IES Celia Viñas"
 repo_name: "cibercelia/glosario"
 repo_url: "https://github.com/cibercelia/glosario"
-edit_uri: "edit/main/docs/"
+edit_uri: "edit/main/terminos/"
+
+docs_dir: docs
+site_dir: site
 
 theme:
   name: material
@@ -42,6 +46,15 @@ theme:
   icon:
     logo: material/shield-lock-outline
     repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/cibercelia/glosario
+      name: Repositorio en GitHub
+    - icon: fontawesome/solid/graduation-cap
+      link: https://iescelia.org
+      name: IES Celia Viñas
 
 extra_css:
   - stylesheets/extra.css
@@ -87,8 +100,20 @@ markdown_extensions:
 nav:
   - Inicio: index.md
   - Términos:
+    - Autenticación multifactor (MFA): terms/mfa.md
+    - Cifrado: terms/cifrado.md
+    - CVE: terms/cve.md
+    - Firewall: terms/firewall.md
+    - GNS3: terms/gns3.md
+    - GPO: terms/gpo.md
+    - Hardening: terms/hardening.md
     - Inyección SQL: terms/sql-injection.md
+    - IPS: terms/ips.md
+    - pfSense: terms/pfsense.md
+    - SOC: terms/soc.md
+    - SSH: terms/ssh.md
     - Zero Trust: terms/zero-trust.md
-  - Guía de Contribución:
-    - Cómo Contribuir: guia-contribucion.md
-    - Plantilla para Términos: plantillas/plantilla-termino.md
+  - Colaboradores: colaboradores.md
+  - Guía de contribución:
+    - Cómo contribuir: guia-contribucion.md
+    - Plantilla para términos: plantillas/plantilla-termino.md

@@ -5,10 +5,9 @@ on:
     branches:
       - main
     paths:
-      - "docs/**"
-      - "hooks/**"
-      - "mkdocs.yml"
-      - "requirements.txt"
+      - "terminos/**"
+      - "plantilla.md"
+      - ".mkdocs/**"
 
 jobs:
   validate-and-build:
@@ -28,7 +27,7 @@ jobs:
       - name: 📦 Instalar dependencias
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r .mkdocs/requirements.txt
 
       - name: 🔍 Validar metadatos y términos
         run: |
@@ -39,15 +38,15 @@ jobs:
           import re
           from pathlib import Path
 
-          terms_dir = Path("docs/terms")
+          terms_dir = Path("terminos")
           errors = []
 
           if not terms_dir.exists():
-              print("❌ Error: No existe el directorio docs/terms/")
+              print("❌ Error: No existe el directorio terminos/")
               sys.exit(1)
 
           for md_file in terms_dir.glob("*.md"):
-              if md_file.name.startswith(("_", ".")) or md_file.name == "index.md":
+              if md_file.name.startswith(("_", ".")):
                   continue
               
               # Validar formato kebab-case del nombre
@@ -61,7 +60,8 @@ jobs:
                   continue
 
               try:
-                  fm = yaml.safe_load(match.group(1)) or {}
+                  raw_yaml = match.group(1).expandtabs(2)
+                  fm = yaml.safe_load(raw_yaml) or {}
               except Exception as e:
                   errors.append(f"Error de sintaxis YAML en '{md_file.name}': {e}")
                   continue
@@ -82,4 +82,4 @@ jobs:
 
       - name: 🏗️ Compilar sitio web con MkDocs (Modo Estricto)
         run: |
-          mkdocs build --strict
+          mkdocs build -f .mkdocs/mkdocs.yml --strict

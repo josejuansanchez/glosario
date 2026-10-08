@@ -1,5 +1,5 @@
 ---
-title: "Zero Trust (Confianza Cero)"
+title: "Zero Trust (confianza cero)"
 category: "Arquitectura y Seguridad en Redes"
 author: "@cibercelia"
 tags:
@@ -11,7 +11,7 @@ tags:
 summary: "Modelo de arquitectura de ciberseguridad basado en el principio de no confiar nunca y verificar siempre de forma continua e inequívoca."
 ---
 
-# Zero Trust (Confianza Cero)
+# Zero Trust (confianza cero)
 
 <div class="term-meta-box">
   <div class="term-meta-item">
@@ -30,14 +30,14 @@ summary: "Modelo de arquitectura de ciberseguridad basado en el principio de no 
 
 ## 📖 Definición
 
-**Zero Trust** (Confianza Cero) es una filosofía y modelo estratégico de seguridad integral que asume que las amenazas existen tanto fuera como dentro del perímetro tradicional de la red. Bajo el paradigma de **"Nunca confiar, siempre verificar"** (*Never Trust, Always Verify*), ningún usuario, dispositivo, servicio o flujo de red se considera confiable por defecto, independientemente de su ubicación física o de red corporativa.
+**Zero Trust** (confianza cero) es una filosofía y modelo estratégico de seguridad integral que asume que las amenazas existen tanto fuera como dentro del perímetro tradicional de la red. Bajo el paradigma de **"Nunca confiar, siempre verificar"** (*Never Trust, Always Verify*), ningún usuario, dispositivo, servicio o flujo de red se considera confiable por defecto, independientemente de su ubicación física o de red corporativa.
 
 !!! warning "Importante"
     Zero Trust no es un producto o herramienta concreta que se compra, sino una arquitectura y marco de trabajo continuo que combina identidades robustas, microsegmentación, observabilidad y políticas dinámicas basadas en contexto.
 
 ---
 
-## 🏛️ Los 3 Principios Fundamentales (NIST SP 800-207)
+## 🏛️ Los tres principios fundamentales (NIST SP 800-207)
 
 ```mermaid
 graph TD
@@ -58,7 +58,7 @@ graph TD
 
 ---
 
-## 🔍 Comparativa: Modelo Tradicional vs Zero Trust
+## 🔍 Comparativa: modelo tradicional vs. Zero Trust
 
 | Característica | Modelo Perimetral Clásico ("Castillo y Foso") | Modelo Zero Trust |
 | :--- | :--- | :--- |
@@ -69,7 +69,7 @@ graph TD
 
 ---
 
-## 🛡️ Pilares de Implementación
+## 🛡️ Pilares de implementación
 
 - **Identidades**: Autenticación multifactor robusta (MFA/FIDO2) y gestión de ciclo de vida de accesos (IAM/PAM).
 - **Dispositivos**: Verificación del cumplimiento del estado del endpoint (antivirus activo, parcheado de SO, cifrado de disco BitLocker/FileVault).

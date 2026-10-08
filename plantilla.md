@@ -1,5 +1,5 @@
 ---
-title: "Nombre del Término o Concepto"
+title: "Nombre del término o concepto"
 category: "Vulnerabilidades Web"  # Ej: Criptografía, Redes, Identidad y Acceso, Malware, OWASP Top 10, DevSecOps, etc.
 author: "@tu-usuario-github"      # Tu usuario de GitHub para atribuirte la autoría
 tags:
@@ -9,7 +9,7 @@ tags:
 summary: "Breve resumen explicativo del término en una o dos frases (máximo 200 caracteres)."
 ---
 
-# Nombre del Término o Concepto
+# Nombre del término o concepto
 
 <div class="term-meta-box">
   <div class="term-meta-item">
@@ -25,12 +25,12 @@ summary: "Breve resumen explicativo del término en una o dos frases (máximo 20
 ## 📖 Definición
 Explicación detallada y rigurosa del concepto. ¿Qué es exactamente? ¿Cuál es su origen o contexto histórico/técnico?
 
-!!! note "Nota Importante"
+!!! note "Nota importante"
     Utiliza notas o avisos destacados para resaltar aspectos clave o advertencias importantes sobre este concepto.
 
 ---
 
-## ⚙️ ¿Cómo funciona? / Principios Fundamentales
+## ⚙️ ¿Cómo funciona? / Principios fundamentales
 Explica la arquitectura, los mecanismos subyacentes o el flujo de ejecución:
 
 1. **Paso o componente 1**: Descripción técnica.
@@ -39,10 +39,10 @@ Explica la arquitectura, los mecanismos subyacentes o el flujo de ejecución:
 
 ---
 
-## 🎯 Ejemplo Práctico o Escenario de Demostración
+## 🎯 Ejemplo práctico o escenario de demostración
 Presenta un ejemplo claro. Si aplica, incluye bloques de código o diagramas.
 
-=== "Escenario Vulnerable / Incorrecto"
+=== "Escenario vulnerable / incorrecto"
 
     ```python
     # Ejemplo de código vulnerable o configuración insegura
@@ -50,7 +50,7 @@ Presenta un ejemplo claro. Si aplica, incluye bloques de código o diagramas.
         return f"SELECT * FROM users WHERE username = '{user_input}'"
     ```
 
-=== "Escenario Seguro / Remediado"
+=== "Escenario seguro / remediado"
 
     ```python
     # Ejemplo de código seguro con consultas parametrizadas
@@ -61,7 +61,7 @@ Presenta un ejemplo claro. Si aplica, incluye bloques de código o diagramas.
 
 ---
 
-## 🛡️ Medidas de Mitigación y Buenas Prácticas
+## 🛡️ Medidas de mitigación y buenas prácticas
 Lista las recomendaciones oficiales (OWASP, NIST, CIS, etc.) para prevenir o aplicar este concepto:
 
 - [x] **Recomendación 1**: Descripción de la contramedida.
@@ -70,7 +70,7 @@ Lista las recomendaciones oficiales (OWASP, NIST, CIS, etc.) para prevenir o apl
 
 ---
 
-## 🔗 Referencias y Enlaces de Interés
+## 🔗 Referencias y enlaces de interés
 - [Estándar o Guía Oficial (e.g., OWASP / NIST)](https://owasp.org)
 - [Documentación técnica complementaria](https://cve.mitre.org)
 - [MITRE ATT&CK Technique / CWE](https://attack.mitre.org)

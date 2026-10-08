@@ -1,5 +1,5 @@
 ---
-title: "Inyección SQL (SQL Injection - SQLi)"
+title: "Inyección SQL (SQL injection - SQLi)"
 category: "Vulnerabilidades Web / OWASP"
 author: "@cibercelia"
 tags:
@@ -11,7 +11,7 @@ tags:
 summary: "Vulnerabilidad de seguridad web que permite a un atacante interferir en las consultas que una aplicación realiza a su base de datos relacional."
 ---
 
-# Inyección SQL (SQL Injection - SQLi)
+# Inyección SQL (SQL injection - SQLi)
 
 <div class="term-meta-box">
   <div class="term-meta-item">
@@ -32,12 +32,12 @@ summary: "Vulnerabilidad de seguridad web que permite a un atacante interferir e
 
 La **Inyección SQL (SQLi)** es una vulnerabilidad de inyección de código en la capa de persistencia donde datos no confiables introducidos por el usuario son concatenados directamente en una sentencia SQL sin sanitización ni parametrización previa. Esto permite al atacante manipular la estructura lógica de la consulta original, logrando leer, modificar o eliminar datos confidenciales, eludir mecanismos de autenticación e incluso ejecutar comandos en el sistema operativo subyacente.
 
-!!! danger "Advertencia Crítica"
+!!! danger "Advertencia crítica"
     SQLi se mantiene de manera recurrente entre las vulnerabilidades más críticas del **OWASP Top 10** debido a su severo impacto en la confidencialidad, integridad y disponibilidad del negocio.
 
 ---
 
-## 🧭 Tipos Principales de SQLi
+## 🧭 Tipos principales de SQLi
 
 | Tipo | Denominación | Descripción |
 | :--- | :--- | :--- |
@@ -47,11 +47,11 @@ La **Inyección SQL (SQLi)** es una vulnerabilidad de inyección de código en l
 
 ---
 
-## 🎯 Ejemplo Práctico: Autenticación Vulnerable vs Segura
+## 🎯 Ejemplo práctico: autenticación vulnerable vs. segura
 
 Supongamos un formulario de inicio de sesión vulnerable donde el atacante introduce como usuario: `' OR 1=1 --`.
 
-=== "❌ Código Inseguro (Concatenación)"
+=== "❌ Código inseguro (concatenación)"
 
     ```python linenums="1"
     import sqlite3
@@ -68,7 +68,7 @@ Supongamos un formulario de inicio de sesión vulnerable donde el atacante intro
         return cursor.fetchone()
     ```
 
-=== "✅ Código Seguro (Consultas Parametrizadas)"
+=== "✅ Código seguro (consultas parametrizadas)"
 
     ```python linenums="1"
     import sqlite3
@@ -86,7 +86,7 @@ Supongamos un formulario de inicio de sesión vulnerable donde el atacante intro
 
 ---
 
-## 🛡️ Medidas de Mitigación
+## 🛡️ Medidas de mitigación
 
 1. **Sentencias Preparadas (Prepared Statements / Parameterized Queries)**: Es la defensa primaria e imprescindible. Separa el código SQL de los datos.
 2. **Uso de ORMs Modernos**: Frameworks como SQLAlchemy, Hibernate o Entity Framework utilizan consultas parametrizadas de forma nativa por defecto.

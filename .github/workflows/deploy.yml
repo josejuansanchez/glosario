@@ -5,10 +5,9 @@ on:
     branches:
       - main
     paths:
-      - "docs/**"
-      - "hooks/**"
-      - "mkdocs.yml"
-      - "requirements.txt"
+      - "terminos/**"
+      - "plantilla.md"
+      - ".mkdocs/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
@@ -19,7 +18,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -40,16 +39,16 @@ jobs:
       - name: 📦 Instalar dependencias
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r .mkdocs/requirements.txt
 
       - name: 🏗️ Compilar documentación
         run: |
-          mkdocs build
+          mkdocs build -f .mkdocs/mkdocs.yml
 
       - name: 📤 Subir artefacto para GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./site
+          path: .mkdocs/site
 
   deploy:
     name: Desplegar en GitHub Pages
