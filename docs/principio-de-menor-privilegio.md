@@ -1,7 +1,7 @@
 ---
 title: "Principio de Menor Privilegio"
 category: "Identidad y Acceso"
-author: "@tu-usuario-github"
+author: "@radasir"
 tags:
   - ciberseguridad
   - control-de-acceso
@@ -21,7 +21,7 @@ summary: "Principio de seguridad que limita los permisos de usuarios y procesos 
   </div>
   <div class="term-meta-item">
     <span class="term-meta-label">Autor / Colaborador</span>
-    <span class="term-meta-value"><a href="https://github.com/tu-usuario-github" target="_blank">@tu-usuario-github</a></span>
+    <span class="term-meta-value"><a href="https://github.com/radasir" target="_blank">@radasir</a></span>
   </div>
 </div>
 
